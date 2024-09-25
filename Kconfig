@@ -27,13 +27,17 @@ menu "CMSIS Software Kits"
         bool "RTOS2 API"
 
     config MCUX_COMPONENT_CMSIS_Device_API_OSTick
-        bool "OSTick API"
+        bool "RTOS2 OSTick API"
 
-    config MCUX_COMPONENT_CMSIS_RTOS2_Secure
-        bool "RTOS2 Secure"
+    config MCUX_COMPONENT_CMSIS_RTOS2_RTX
+        bool "RTOS2 RTX"
+        select MCUX_COMPONENT_CMSIS_Device_API_RTOS2
+        select MCUX_COMPONENT_CMSIS_Device_API_OSTick
 
-    config MCUX_COMPONENT_CMSIS_RTOS2_NonSecure
-        bool "RTOS2 NonSecure"
+    config MCUX_COMPONENT_CMSIS_RTOS2_RTX_LIB
+        bool "RTOS2 RTX Library"
+        select MCUX_COMPONENT_CMSIS_Device_API_RTOS2
+        select MCUX_COMPONENT_CMSIS_Device_API_OSTick
 
     endmenu
 

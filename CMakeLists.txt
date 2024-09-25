@@ -1272,7 +1272,133 @@ if (CONFIG_MCUX_COMPONENT_CMSIS_Device_API_RTOS2)
 
 endif()
 
-if (CONFIG_MCUX_COMPONENT_CMSIS_RTOS2_Secure)
+if (CONFIG_MCUX_COMPONENT_CMSIS_RTOS2_RTX)
+    mcux_add_macro(
+        CC "-DCMSIS_device_header=\\\"fsl_device_registers.h\\\" -DRTE_COMPONENTS_H"
+    )
+
+    mcux_add_source(
+        SOURCES
+            RTOS2/RTX/Source/rtx_core_c.h
+            RTOS2/RTX/Source/rtx_core_ca.h
+            RTOS2/RTX/Source/rtx_core_cm.h
+            RTOS2/RTX/Source/rtx_delay.c
+            RTOS2/RTX/Source/rtx_evflags.c
+            RTOS2/RTX/Source/rtx_evr.c
+            RTOS2/RTX/Source/rtx_kernel.c
+            RTOS2/RTX/Source/rtx_memory.c
+            RTOS2/RTX/Source/rtx_mempool.c
+            RTOS2/RTX/Source/rtx_msgqueue.c
+            RTOS2/RTX/Source/rtx_mutex.c
+            RTOS2/RTX/Source/rtx_semaphore.c
+            RTOS2/RTX/Source/rtx_system.c
+            RTOS2/RTX/Source/rtx_thread.c
+            RTOS2/RTX/Source/rtx_timer.c
+            RTOS2/RTX/Source/rtx_lib.c
+            RTOS2/RTX/Source/rtx_lib.h
+            RTOS2/RTX/Include/rtx_evr.h
+            RTOS2/RTX/Include/rtx_os.h
+            RTOS2/RTX/Include/rtx_def.h
+            RTOS2/RTX/Config/RTX_Config.c
+            RTOS2/RTX/Config/RTX_Config.h
+    )
+
+    mcux_add_source(
+        SOURCES
+            RTOS2/Source/os_systick.c
+            CORES cm0 cm0p cm3 cm4 cm4f cm7 cm7f cm23 cm33 cm33f
+    )
+
+    mcux_add_source(
+        SOURCES
+            RTOS2/Source/os_tick_gtim.c
+            RTOS2/Source/os_tick_ptim.c
+            CORES ca7
+    )
+
+    mcux_add_source(
+        SOURCES
+            RTOS2/RTX/Source/GCC/irq_armv6m.S
+            TOOLCHAINS mdk armgcc mcux
+            CORES cm0 cm0p
+    )
+
+    mcux_add_source(
+        SOURCES
+            RTOS2/RTX/Source/GCC/irq_armv7a.S
+            TOOLCHAINS mdk armgcc mcux
+            CORES ca7
+    )
+
+    mcux_add_source(
+        SOURCES
+            RTOS2/RTX/Source/GCC/irq_armv7m.S
+            TOOLCHAINS mdk armgcc mcux
+            CORES cm3 cm4 cm7 cm4f cm7f
+    )
+
+    mcux_add_source(
+        SOURCES
+            RTOS2/RTX/Source/GCC/irq_armv8mbl.S
+            TOOLCHAINS mdk armgcc mcux
+            CORES cm23
+    )
+
+    mcux_add_source(
+        SOURCES
+            RTOS2/RTX/Source/GCC/irq_armv8mml.S
+            TOOLCHAINS mdk armgcc mcux
+            CORES cm33 cm33f
+    )
+
+    mcux_add_source(
+        SOURCES
+            RTOS2/RTX/Source/IAR/irq_armv6m.s
+            TOOLCHAINS iar
+            CORES cm0 cm0p
+    )
+
+    mcux_add_source(
+        SOURCES
+            RTOS2/RTX/Source/IAR/irq_armv7a.s
+            TOOLCHAINS iar
+            CORES ca7
+    )
+
+    mcux_add_source(
+        SOURCES
+            RTOS2/RTX/Source/IAR/irq_armv7m.s
+            TOOLCHAINS iar
+            CORES cm3 cm4 cm7 cm4f cm7f
+    )
+
+    mcux_add_source(
+        SOURCES
+            RTOS2/RTX/Source/IAR/irq_armv8mbl.s
+            TOOLCHAINS iar
+            CORES cm23
+    )
+
+    mcux_add_source(
+        SOURCES
+            RTOS2/RTX/Source/IAR/irq_armv8mml.s
+            TOOLCHAINS iar
+            CORES cm33 cm33f
+    )
+
+    mcux_add_include(
+        INCLUDES
+            RTOS2/RTX/Include/./
+            RTOS2/RTX/Config/./
+    )
+
+endif()
+
+if (CONFIG_MCUX_COMPONENT_CMSIS_RTOS2_RTX_LIB)
+    mcux_add_mdk_configuration(
+        CC "-fno-short-wchar -fno-short-enums"
+    )
+
     mcux_add_source(
         SOURCES
             RTOS2/RTX/Source/rtx_core_c.h
@@ -1288,207 +1414,219 @@ if (CONFIG_MCUX_COMPONENT_CMSIS_RTOS2_Secure)
     )
 
     mcux_add_library(
-        LIBS RTOS2/RTX/Library/IAR/RTX_CM0.a
+        LIBS RTOS2/RTX/Library/IAR/RTX_V6M.a
         TOOLCHAINS iar
         CORES cm0 cm0p
     )
 
     mcux_add_library(
-        LIBS RTOS2/RTX/Library/IAR/RTX_CM3.a
+        LIBS RTOS2/RTX/Library/IAR/RTX_V7M.a
         TOOLCHAINS iar
         CORES cm3 cm4 cm7
     )
 
     mcux_add_library(
-        LIBS RTOS2/RTX/Library/IAR/RTX_CM4F.a
+        LIBS RTOS2/RTX/Library/IAR/RTX_V7MF.a
         TOOLCHAINS iar
         CORES cm4f cm7f
     )
 
     mcux_add_library(
-        LIBS RTOS2/RTX/Library/GCC/libRTX_CM0.a
+        LIBS RTOS2/RTX/Library/GCC/libRTX_V6M.a
         TOOLCHAINS armgcc mcux
         CORES cm0 cm0p
     )
 
     mcux_add_library(
-        LIBS RTOS2/RTX/Library/GCC/libRTX_CM3.a
+        LIBS RTOS2/RTX/Library/GCC/libRTX_V7M.a
         TOOLCHAINS armgcc mcux
         CORES cm3 cm4 cm7
     )
 
     mcux_add_library(
-        LIBS RTOS2/RTX/Library/GCC/libRTX_CM4F.a
+        LIBS RTOS2/RTX/Library/GCC/libRTX_V7MF.a
         TOOLCHAINS armgcc mcux
         CORES cm4f cm7f
     )
 
     mcux_add_library(
-        LIBS RTOS2/RTX/Library/ARM/RTX_CM0.lib
+        LIBS RTOS2/RTX/Library/ARM/RTX_V6M.lib
         TOOLCHAINS mdk
         CORES cm0 cm0p
     )
 
     mcux_add_library(
-        LIBS RTOS2/RTX/Library/ARM/RTX_CM3.lib
+        LIBS RTOS2/RTX/Library/ARM/RTX_V7M.lib
         TOOLCHAINS mdk
         CORES cm3 cm4 cm7
     )
 
     mcux_add_library(
-        LIBS RTOS2/RTX/Library/ARM/RTX_CM4F.lib
+        LIBS RTOS2/RTX/Library/ARM/RTX_V7MF.lib
         TOOLCHAINS mdk
         CORES cm4f cm7f
     )
 
     mcux_add_library(
         LIBS RTOS2/RTX/Library/IAR/RTX_V8MB.a
-        COMPILERS iar
+        TOOLCHAINS iar
         CORES cm23
+        DSP "NO_DSP"
+        FPU "NO_FPU"
+        TRUSTZONE "TZ"
+    )
+
+    mcux_add_library(
+        LIBS RTOS2/RTX/Library/IAR/RTX_V8MM.a
+        TOOLCHAINS iar
+        CORES cm33 cm33f
+        DSP "HAS_DSP"
+        FPU "NO_FPU"
+        TRUSTZONE "TZ"
+    )
+
+    mcux_add_library(
+        LIBS RTOS2/RTX/Library/IAR/RTX_V8MBN.a
+        TOOLCHAINS iar
+        CORES cm23
+        DSP "NO_DSP"
+        FPU "NO_FPU"
+        TRUSTZONE "NO_TZ"
     )
 
     mcux_add_library(
         LIBS RTOS2/RTX/Library/IAR/RTX_V8MMF.a
-        COMPILERS iar
+        TOOLCHAINS iar
         CORES cm33 cm33f
+        DSP "HAS_DSP"
+        FPU "SP_FPU" "DP_FPU"
+        TRUSTZONE "TZ"
+    )
+
+    mcux_add_library(
+        LIBS RTOS2/RTX/Library/IAR/RTX_V8MMFN.a
+        TOOLCHAINS iar
+        CORES cm33 cm33f
+        DSP "HAS_DSP"
+        FPU "SP_FPU" "DP_FPU"
+        TRUSTZONE "NO_TZ"
+    )
+
+    mcux_add_library(
+        LIBS RTOS2/RTX/Library/IAR/RTX_V8MMN.a
+        TOOLCHAINS iar
+        CORES cm33 cm33f
+        DSP "HAS_DSP"
+        FPU "NO_FPU"
+        TRUSTZONE "NO_TZ"
     )
 
     mcux_add_library(
         LIBS RTOS2/RTX/Library/GCC/libRTX_V8MB.a
         COMPILERS gcc
         CORES cm23
+        DSP "NO_DSP"
+        FPU "NO_FPU"
+        TRUSTZONE "TZ"
+    )
+
+    mcux_add_library(
+        LIBS RTOS2/RTX/Library/GCC/libRTX_V8MM.a
+        COMPILERS gcc
+        CORES cm33 cm33f
+        DSP "HAS_DSP"
+        FPU "NO_FPU"
+        TRUSTZONE "TZ"
     )
 
     mcux_add_library(
         LIBS RTOS2/RTX/Library/GCC/libRTX_V8MMF.a
         COMPILERS gcc
         CORES cm33 cm33f
-    )
-
-    mcux_add_library(
-        LIBS RTOS2/RTX/Library/ARM/RTX_V8MB.lib
-        COMPILERS armclang
-        CORES cm23
-    )
-
-    mcux_add_library(
-        LIBS RTOS2/RTX/Library/ARM/RTX_V8MMF.lib
-        COMPILERS armclang
-        CORES cm33 cm33f
-    )
-
-    mcux_add_include(
-        INCLUDES
-            RTOS2/RTX/Source
-            RTOS2/RTX/Include
-            RTOS2/RTX/Config
-    )
-
-endif()
-
-if (CONFIG_MCUX_COMPONENT_CMSIS_RTOS2_NonSecure)
-    mcux_add_source(
-        SOURCES
-            RTOS2/RTX/Source/rtx_core_c.h
-            RTOS2/RTX/Source/rtx_core_ca.h
-            RTOS2/RTX/Source/rtx_core_cm.h
-            RTOS2/RTX/Source/rtx_lib.h
-            RTOS2/RTX/Source/rtx_lib.c
-            RTOS2/RTX/Include/rtx_evr.h
-            RTOS2/RTX/Include/rtx_os.h
-            RTOS2/RTX/Include/rtx_def.h
-            RTOS2/RTX/Config/RTX_Config.c
-            RTOS2/RTX/Config/RTX_Config.h
-    )
-
-    mcux_add_library(
-        LIBS RTOS2/RTX/Library/IAR/RTX_CM0.a
-        TOOLCHAINS iar
-        CORES cm0 cm0p
-    )
-
-    mcux_add_library(
-        LIBS RTOS2/RTX/Library/IAR/RTX_CM3.a
-        TOOLCHAINS iar
-        CORES cm3 cm4 cm7
-    )
-
-    mcux_add_library(
-        LIBS RTOS2/RTX/Library/IAR/RTX_CM4F.a
-        TOOLCHAINS iar
-        CORES cm4f cm7f
-    )
-
-    mcux_add_library(
-        LIBS RTOS2/RTX/Library/GCC/libRTX_CM0.a
-        TOOLCHAINS armgcc mcux
-        CORES cm0 cm0p
-    )
-
-    mcux_add_library(
-        LIBS RTOS2/RTX/Library/GCC/libRTX_CM3.a
-        TOOLCHAINS armgcc mcux
-        CORES cm3 cm4 cm7
-    )
-
-    mcux_add_library(
-        LIBS RTOS2/RTX/Library/GCC/libRTX_CM4F.a
-        TOOLCHAINS armgcc mcux
-        CORES cm4f cm7f
-    )
-
-    mcux_add_library(
-        LIBS RTOS2/RTX/Library/ARM/RTX_CM0.lib
-        TOOLCHAINS mdk
-        CORES cm0 cm0p
-    )
-
-    mcux_add_library(
-        LIBS RTOS2/RTX/Library/ARM/RTX_CM3.lib
-        TOOLCHAINS mdk
-        CORES cm3 cm4 cm7
-    )
-
-    mcux_add_library(
-        LIBS RTOS2/RTX/Library/ARM/RTX_CM4F.lib
-        TOOLCHAINS mdk
-        CORES cm4f cm7f
-    )
-
-    mcux_add_library(
-        LIBS RTOS2/RTX/Library/IAR/RTX_V8MBN.a
-        COMPILERS iar
-        CORES cm23
-    )
-
-    mcux_add_library(
-        LIBS RTOS2/RTX/Library/IAR/RTX_V8MMFN.a
-        COMPILERS iar
-        CORES cm33 cm33f
+        DSP "HAS_DSP"
+        FPU "SP_FPU" "DP_FPU"
+        TRUSTZONE "TZ"
     )
 
     mcux_add_library(
         LIBS RTOS2/RTX/Library/GCC/libRTX_V8MBN.a
         COMPILERS gcc
         CORES cm23
+        DSP "NO_DSP"
+        FPU "NO_FPU"
+        TRUSTZONE "NO_TZ"
     )
 
     mcux_add_library(
         LIBS RTOS2/RTX/Library/GCC/libRTX_V8MMFN.a
         COMPILERS gcc
         CORES cm33 cm33f
+        DSP "HAS_DSP"
+        FPU "SP_FPU" "DP_FPU"
+        TRUSTZONE "NO_TZ"
     )
 
     mcux_add_library(
-        LIBS RTOS2/RTX/Library/ARM/RTX_V8MBN.lib
+        LIBS RTOS2/RTX/Library/GCC/libRTX_V8MMN.a
+        COMPILERS gcc
+        CORES cm33 cm33f
+        DSP "HAS_DSP"
+        FPU "NO_FPU"
+        TRUSTZONE "NO_TZ"
+    )
+
+    mcux_add_library(
+        LIBS RTOS2/RTX/Library/CLANG/libRTX_V8MB.a
         COMPILERS armclang
         CORES cm23
+        DSP "NO_DSP"
+        FPU "NO_FPU"
+        TRUSTZONE "TZ"
     )
 
     mcux_add_library(
-        LIBS RTOS2/RTX/Library/ARM/RTX_V8MMFN.lib
+        LIBS RTOS2/RTX/Library/CLANG/libRTX_V8MM.a
         COMPILERS armclang
         CORES cm33 cm33f
+        DSP "HAS_DSP"
+        FPU "NO_FPU"
+        TRUSTZONE "TZ"
+    )
+
+    mcux_add_library(
+        LIBS RTOS2/RTX/Library/CLANG/libRTX_V8MMF.a
+        COMPILERS armclang
+        CORES cm33 cm33f
+        DSP "HAS_DSP"
+        FPU "SP_FPU" "DP_FPU"
+        TRUSTZONE "TZ"
+    )
+
+    mcux_add_library(
+        LIBS RTOS2/RTX/Library/CLANG/libRTX_V8MBN.a
+        COMPILERS armclang
+        CORES cm23
+        DSP "NO_DSP"
+        FPU "NO_FPU"
+        TRUSTZONE "NO_TZ"
+    )
+
+    mcux_add_library(
+        LIBS RTOS2/RTX/Library/CLANG/libRTX_V8MMFN.a
+        COMPILERS armclang
+        CORES cm33 cm33f
+        DSP "HAS_DSP"
+        FPU "SP_FPU" "DP_FPU"
+        TRUSTZONE "NO_TZ"
+    )
+
+    mcux_add_library(
+        LIBS RTOS2/RTX/Library/CLANG/libRTX_V8MMN.a
+        COMPILERS armclang
+        CORES cm33 cm33f
+        DSP "HAS_DSP"
+        FPU "NO_FPU"
+        TRUSTZONE "NO_TZ"
     )
 
     mcux_add_include(
