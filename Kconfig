@@ -64,6 +64,9 @@ menu "CMSIS Software Kits"
         config MCUX_COMPONENT_CMSIS_Driver_Include.Flash
             bool "CMSIS Driver Flash Include"
 
+        config MCUX_COMPONENT_CMSIS_Driver_Include.GPIO
+            bool "CMSIS Driver GPIO Include"
+
         config MCUX_COMPONENT_CMSIS_Driver_Include.I2C
             bool "CMSIS Driver I2C Include"
 

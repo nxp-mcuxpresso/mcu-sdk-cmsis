@@ -5,10 +5,10 @@
 #
 
 if (CONFIG_MCUX_COMPONENT_CMSIS_Include_core_cm)
-
-    mcux_add_include(
-        INCLUDES
-            Core/Include/./
+    mcux_add_source(
+        SOURCES Core/Include/cmsis_armclang.h
+        SOURCES Core/Include/m-profile/cmsis_armclang_m.h
+        COMPILERS armclang
     )
 
     mcux_add_source(
@@ -18,24 +18,14 @@ if (CONFIG_MCUX_COMPONENT_CMSIS_Include_core_cm)
     )
 
     mcux_add_source(
-        SOURCES Core/Include/cmsis_armcc.h
-        COMPILERS armcc
-    )
-
-    mcux_add_source(
-        SOURCES Core/Include/cmsis_armclang.h
-        SOURCES Core/Include/cmsis_armclang_ltm.h
-        COMPILERS armclang
+        SOURCES Core/Include/m-profile/cmsis_iccarm_m.h
+        COMPILERS iar
     )
 
     mcux_add_source(
         SOURCES Core/Include/cmsis_gcc.h
+        SOURCES Core/Include/m-profile/cmsis_gcc_m.h
         COMPILERS gcc
-    )
-
-    mcux_add_source(
-        SOURCES Core/Include/cmsis_iccarm.h
-        COMPILERS iar
     )
 
     mcux_add_source(
@@ -70,69 +60,63 @@ if (CONFIG_MCUX_COMPONENT_CMSIS_Include_core_cm)
 
     mcux_add_source(
         SOURCES Core/Include/core_cm7.h
+        SOURCES Core/Include/m-profile/armv7m_cachel1.h
         CORES cm7 cm7f
     )
 
     mcux_add_source(
-        SOURCES Core/Include/cachel1_armv7.h
-        CORES cm7 cm7f
-    )
-
-    mcux_add_source(
-        SOURCES Core/Include/mpu_armv7.h
+        SOURCES Core/Include/m-profile/armv7m_mpu.h
         CORES cm0 cm0p cm3 cm4 cm4f cm7 cm7f
     )
 
     mcux_add_source(
-        SOURCES Core/Include/mpu_armv8.h
+        SOURCES Core/Include/m-profile/armv8m_mpu.h
+        SOURCES Core/Include/tz_context.h
         CORES cm23 cm33 cm33f
     )
 
-    mcux_add_source(
-        SOURCES Core/Include/tz_context.h
-        CORES cm23 cm33 cm33f
+    mcux_add_include(
+        INCLUDES
+            Core/Include/./
+            Core/Include/m-profile/./
     )
 
 endif()
 
 if (CONFIG_MCUX_COMPONENT_CMSIS_Include_core_ca7)
-
-    mcux_add_include(
-        INCLUDES
-            Core_A/./
-    )
-
     mcux_add_source(
-        SOURCES Core_A/Include/cmsis_compiler.h
-        SOURCES Core_A/Include/cmsis_cp15.h
-        SOURCES Core_A/Include/irq_ctrl.h
-        SOURCES Core_A/Source/irq_ctrl_gic.c
+        SOURCES CMSIS/Include/cmsis_compiler.h
+        SOURCES CMSIS/Include/a-profile/cmsis_cp15.h
+        SOURCES CMSIS/Include/a-profile/irq_ctrl.h
+        SOURCES CMSIS/Source/irq_ctrl_gic.c
         COMPILERS armclang armcc gcc iar
     )
 
     mcux_add_source(
-        SOURCES Core_A/Include/cmsis_armcc.h
-        COMPILERS armcc
+        SOURCES CMSIS/Include/core_ca.h
+        CORES ca7
     )
 
     mcux_add_source(
-        SOURCES Core_A/Include/cmsis_armclang.h
+        SOURCES CMSIS/Include/a-profile/cmsis_armclang_a.h
         COMPILERS armclang
     )
 
     mcux_add_source(
-        SOURCES Core_A/Include/cmsis_gcc.h
+        SOURCES Core/Include/cmsis_gcc.h
+        SOURCES CMSIS/Include/a-profile/cmsis_gcc_a.h
         COMPILERS gcc
     )
 
     mcux_add_source(
-        SOURCES Core_A/Include/cmsis_iccarm.h
+        SOURCES CMSIS/Include/a-profile/cmsis_iccarm_a.h
         COMPILERS iar
     )
 
-    mcux_add_source(
-        SOURCES Core_A/Include/core_ca.h
-        CORES ca7
+    mcux_add_include(
+        INCLUDES
+            Core/Include/./
+            Core/Include/a-profile/./
     )
 
 endif()
@@ -1113,6 +1097,20 @@ if (CONFIG_MCUX_COMPONENT_CMSIS_Driver_Include.Flash)
     mcux_add_source(
         SOURCES
             Driver/Include/Driver_Flash.h
+            Driver/Include/Driver_Common.h
+    )
+
+    mcux_add_include(
+        INCLUDES
+            Driver/Include
+    )
+
+endif()
+
+if (CONFIG_MCUX_COMPONENT_CMSIS_Driver_Include.GPIO)
+    mcux_add_source(
+        SOURCES
+            Driver/Include/Driver_GPIO.h
             Driver/Include/Driver_Common.h
     )
 
