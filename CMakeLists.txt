@@ -487,9 +487,11 @@ if (CONFIG_MCUX_COMPONENT_CMSIS_DSP_Source)
             DSP/Source/FilteringFunctions/arm_correlate_q31.c
             DSP/Source/FilteringFunctions/arm_correlate_q7.c
             DSP/Source/FilteringFunctions/arm_fir_decimate_f32.c
+            DSP/Source/FilteringFunctions/arm_fir_decimate_f64.c
             DSP/Source/FilteringFunctions/arm_fir_decimate_fast_q15.c
             DSP/Source/FilteringFunctions/arm_fir_decimate_fast_q31.c
             DSP/Source/FilteringFunctions/arm_fir_decimate_init_f32.c
+            DSP/Source/FilteringFunctions/arm_fir_decimate_init_f64.c
             DSP/Source/FilteringFunctions/arm_fir_decimate_init_q15.c
             DSP/Source/FilteringFunctions/arm_fir_decimate_init_q31.c
             DSP/Source/FilteringFunctions/arm_fir_decimate_q15.c
@@ -792,7 +794,7 @@ if (CONFIG_MCUX_COMPONENT_CMSIS_DSP_Source)
             DSP/Source/SupportFunctions/arm_selection_sort_f32.c
             DSP/Source/SupportFunctions/arm_sort_f32.c
             DSP/Source/SupportFunctions/arm_sort_init_f32.c
-            DSP/Source/SupportFunctions/arm_weighted_sum_f32.c
+            DSP/Source/SupportFunctions/arm_weighted_average_f32.c
             DSP/Source/SupportFunctions/arm_barycenter_f16.c
             DSP/Source/SupportFunctions/arm_copy_f16.c
             DSP/Source/SupportFunctions/arm_f16_to_float.c
@@ -802,7 +804,7 @@ if (CONFIG_MCUX_COMPONENT_CMSIS_DSP_Source)
             DSP/Source/SupportFunctions/arm_fill_f16.c
             DSP/Source/SupportFunctions/arm_float_to_f16.c
             DSP/Source/SupportFunctions/arm_q15_to_f16.c
-            DSP/Source/SupportFunctions/arm_weighted_sum_f16.c
+            DSP/Source/SupportFunctions/arm_weighted_average_f16.c
             DSP/Source/TransformFunctions/arm_bitreversal.c
             DSP/Source/TransformFunctions/arm_bitreversal2.c
             DSP/Source/TransformFunctions/arm_cfft_f32.c
