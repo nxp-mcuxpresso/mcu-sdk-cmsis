@@ -18,11 +18,11 @@
 
 /* ----------------------------------------------------------------------
  * Project:      CMSIS NN Library
- * Title:        arm_vector_sum_s8
+ * Title:        arm_vector_sum_s8_s64
  * Description:  Generic function for calculating vector sums
  *
- * $Date:        15 February 2024
- * $Revision:    V.2.0.1
+ * $Date:        26 March 2024
+ * $Revision:    V.1.0.0
  *
  * Target :  Arm(R) M-Profile Architecture
  *
@@ -45,23 +45,22 @@
  * Refer header file for details.
  *
  */
-arm_cmsis_nn_status arm_vector_sum_s8(int32_t *vector_sum_buf,
-                                      const int32_t vector_cols,
-                                      const int32_t vector_rows,
-                                      const int8_t *vector_data,
-                                      const int32_t lhs_offset,
-                                      const int32_t *bias_data)
+arm_cmsis_nn_status arm_vector_sum_s8_s64(int64_t *vector_sum_buf,
+                                          const int32_t vector_cols,
+                                          const int32_t vector_rows,
+                                          const int8_t *vector_data,
+                                          const int32_t lhs_offset,
+                                          const int64_t *bias_data)
 {
 
     if (bias_data)
     {
-        memcpy(vector_sum_buf, bias_data, vector_rows * sizeof(int32_t));
+        memcpy(vector_sum_buf, bias_data, vector_rows * sizeof(int64_t));
     }
     else
     {
-        memset(vector_sum_buf, 0, vector_rows * sizeof(int32_t));
+        memset(vector_sum_buf, 0, vector_rows * sizeof(int64_t));
     }
-
     if (lhs_offset)
     {
 #if defined(ARM_MATH_MVEI)
@@ -139,12 +138,12 @@ arm_cmsis_nn_status arm_vector_sum_s8(int32_t *vector_sum_buf,
 #else
         for (int i = 0; i < vector_rows; i++)
         {
-            int32_t sum = 0;
+            int64_t sum = 0;
             for (int j = 0; j < vector_cols; j++)
             {
                 sum += *vector_data++;
             }
-            *vector_sum_buf++ += sum * lhs_offset;
+            *vector_sum_buf++ += sum * (int64_t)lhs_offset;
         }
 #endif
     }
