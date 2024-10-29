@@ -149,11 +149,11 @@ ARM_DSP_ATTRIBUTE void arm_dtw_path_f32(const arm_matrix_instance_f32 *pDTW,
   {
      itemp = fh[0];
      fh[0] = sh[0];
-     sh[0] = itemp;
+     sh[0] = (int16_t)itemp;
 
      itemp = fh[1];
      fh[1] = sh[1];
-     sh[1] = itemp;
+     sh[1] = (int16_t)itemp;
 
      fh += 2;
      sh -= 2;
