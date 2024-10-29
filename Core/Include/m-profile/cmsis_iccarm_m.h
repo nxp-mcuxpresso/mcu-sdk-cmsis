@@ -447,7 +447,10 @@ __STATIC_FORCEINLINE void __TZ_set_CONTROL_NS(uint32_t control)
    * As a workaround we use inline assembly and a memory barrier.
    * (IAR issue EWARM-11901)
    */
-  #define __CLREX()  (__ASM volatile ("CLREX" ::: "memory"))
+  //#define __CLREX()  (__ASM volatile ("CLREX" ::: "memory"))
+  __IAR_FT void __CLREX() {
+    __ASM volatile("CLREX" ::: "memory");
+  }
 
   #define __DMB     __iar_builtin_DMB
   #define __DSB     __iar_builtin_DSB
