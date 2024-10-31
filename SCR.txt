@@ -1,0 +1,14 @@
+NXP Software Content Register
+
+Package: CMSIS
+Version: 2.0.0
+Outgoing License: Apache-2.0
+License File: LICENSE.txt
+Type of content: source code
+Description and comments: CMSIS - CMSIS is Vendor-independent hardware abstraction layer for microcontrollers that are based on Arm Cortex processors, distributed by ARM cores.
+Release Location: https://github.com/nxp-mcuxpresso/mcu-sdk-cmsis
+Origin: 
+      ARM-software CMSIS_5 v5.9.0 project (Apache-2.0) - https://github.com/ARM-software/CMSIS_5
+      ARM-software CMSIS-DSP v1.15.0 project (Apache-2.0) - https://github.com/ARM-software/CMSIS-DSP
+      ARM-software CMSIS-NN v5.0.0 project (Apache-2.0) - https://github.com/ARM-software/CMSIS-NN
+      NXP (Apache-2.0)
