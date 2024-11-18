@@ -21,8 +21,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+/*
+ * Copyright 2024 NXP
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ */
 
+#ifndef RTE_COMPONENTS_H
 #include "RTE_Components.h"
+#endif
 #include CMSIS_device_header
 
 #if defined(PTIM)

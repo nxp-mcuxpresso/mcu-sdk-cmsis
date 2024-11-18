@@ -21,11 +21,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+/*
+ * Copyright 2024 NXP
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ */
 
 #include "os_tick.h"
 
 //lint -emacro((923,9078),SCB,SysTick) "cast from unsigned long to pointer"
+#ifndef RTE_COMPONENTS_H
 #include "RTE_Components.h"
+#endif
 #include CMSIS_device_header
 
 #ifdef  SysTick
