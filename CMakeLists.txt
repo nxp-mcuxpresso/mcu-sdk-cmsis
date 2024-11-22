@@ -1121,13 +1121,13 @@ endif()
 if (CONFIG_MCUX_COMPONENT_CMSIS_Driver_Include.GPIO)
     mcux_add_source(
         SOURCES
-            Driver/Include/Driver_GPIO.h
+            Driver/Include/GPIO/Driver_GPIO.h
             Driver/Include/Driver_Common.h
     )
 
     mcux_add_include(
         INCLUDES
-            Driver/Include
+            Driver/Include/GPIO
     )
 
 endif()
