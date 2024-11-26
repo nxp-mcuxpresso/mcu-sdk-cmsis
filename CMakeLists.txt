@@ -1128,6 +1128,7 @@ if (CONFIG_MCUX_COMPONENT_CMSIS_Driver_Include.GPIO)
     mcux_add_include(
         INCLUDES
             Driver/Include/GPIO
+            Driver/Include
     )
 
 endif()
