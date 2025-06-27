@@ -72,7 +72,17 @@ if (CONFIG_MCUX_COMPONENT_CMSIS_Include_core_cm)
     mcux_add_source(
         SOURCES Core/Include/m-profile/armv8m_mpu.h
         SOURCES Core/Include/tz_context.h
-        CORES cm23 cm33 cm33f
+        CORES cm23 cm33 cm33f cm85
+    )
+
+    mcux_add_source(
+        SOURCES Core/Include/core_cm85.h
+        CORES cm85
+    )
+
+    mcux_add_source(
+        SOURCES Core/Include/m-profile/armv81m_pac.h
+        CORES cm85
     )
 
     mcux_add_include(
