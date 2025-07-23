@@ -1,0 +1,126 @@
+{
+  "SPDXID": "SPDXRef-DOCUMENT",
+  "spdxVersion": "SPDX-2.3",
+  "creationInfo": {
+    "created": "2025-07-12T03:09:01Z",
+    "creators": [
+      "Organization: NXP"
+    ],
+    "licenseListVersion": "3.20"
+  },
+  "name": "mcu-sdk-cmsis-v25.09.00-pvw1",
+  "dataLicense": "CC0-1.0",
+  "documentNamespace": "https://nxp.com/spdx/1564815f-0edf-42ee-9584-dc89fd3dea3f",
+  "packages": [
+    {
+      "SPDXID": "SPDXRef-package-1564815f-0edf-42ee-9584-dc89fd3dea3f",
+      "name": "mcu-sdk-cmsis",
+      "versionInfo": "v25.09.00-pvw1",
+      "licenseConcluded": "(Apache-2.0)",
+      "licenseDeclared": "(Apache-2.0)",
+      "downloadLocation": "https://github.com/nxp-mcuxpresso/mcu-sdk-cmsis",
+      "originator": "Organization: NXP",
+      "supplier": "NOASSERTION",
+      "externalRefs": [],
+      "filesAnalyzed": false
+    },
+    {
+      "SPDXID": "SPDXRef-package-1ffe6406-89b4-415b-9902-0d6549960424",
+      "name": "ARM-software/CMSIS_6",
+      "versionInfo": "v6.1.0",
+      "licenseConcluded": "Apache-2.0",
+      "licenseDeclared": "Apache-2.0",
+      "downloadLocation": "NOASSERTION",
+      "originator": "Organization: ARM-software/CMSIS_6",
+      "supplier": "NOASSERTION",
+      "externalRefs": [],
+      "filesAnalyzed": false
+    },
+    {
+      "SPDXID": "SPDXRef-package-1b53e702-a727-4b80-b13b-236b952bd38e",
+      "name": "ARM-software/CMSIS-DSP",
+      "versionInfo": "v1.16.2",
+      "licenseConcluded": "(Apache-2.0 AND MIT)",
+      "licenseDeclared": "Apache-2.0",
+      "downloadLocation": "NOASSERTION",
+      "originator": "Organization: arm-software",
+      "supplier": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceLocator": "pkg:github/arm-software/cmsis-dsp@v1.16.2",
+          "referenceType": "purl"
+        },
+        {
+          "referenceCategory": "OTHER",
+          "referenceLocator": "364d07fc-b3df-42f2-b23b-8ea322dd723a",
+          "referenceType": "BlackDuck-ComponentOrigin"
+        }
+      ],
+      "filesAnalyzed": false
+    },
+    {
+      "SPDXID": "SPDXRef-package-c21b7318-4ed5-44fb-ba34-664e8a57941c",
+      "name": "ARM-software/CMSIS-NN",
+      "versionInfo": "v6.0.0",
+      "licenseConcluded": "Apache-2.0",
+      "licenseDeclared": "Apache-2.0",
+      "homepage": "https://github.com/ARM-software/CMSIS-NN",
+      "downloadLocation": "NOASSERTION",
+      "originator": "Organization: arm-software",
+      "supplier": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "OTHER",
+          "referenceLocator": "6ac8d9cc-639d-4b14-9360-d259fca63b0f",
+          "referenceType": "BlackDuck-ComponentOrigin"
+        },
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceLocator": "pkg:github/arm-software/cmsis-nn@v6.0.0",
+          "referenceType": "purl"
+        }
+      ],
+      "filesAnalyzed": false
+    },
+    {
+      "SPDXID": "SPDXRef-package-48e2400f-14cb-493f-916e-3f7950aeb4cd",
+      "name": "ARM-software/CMSIS-RTX",
+      "versionInfo": "v5.9.0",
+      "licenseConcluded": "Apache-2.0",
+      "licenseDeclared": "Apache-2.0",
+      "downloadLocation": "NOASSERTION",
+      "originator": "Organization: ARM-software/CMSIS-RTX",
+      "supplier": "NOASSERTION",
+      "externalRefs": [],
+      "filesAnalyzed": false
+    }
+  ],
+  "relationships": [
+    {
+      "spdxElementId": "SPDXRef-DOCUMENT",
+      "relationshipType": "DESCRIBES",
+      "relatedSpdxElement": "SPDXRef-package-1564815f-0edf-42ee-9584-dc89fd3dea3f"
+    },
+    {
+      "spdxElementId": "SPDXRef-package-1564815f-0edf-42ee-9584-dc89fd3dea3f",
+      "relationshipType": "CONTAINS",
+      "relatedSpdxElement": "SPDXRef-package-c21b7318-4ed5-44fb-ba34-664e8a57941c"
+    },
+    {
+      "spdxElementId": "SPDXRef-package-1564815f-0edf-42ee-9584-dc89fd3dea3f",
+      "relationshipType": "CONTAINS",
+      "relatedSpdxElement": "SPDXRef-package-1b53e702-a727-4b80-b13b-236b952bd38e"
+    },
+    {
+      "spdxElementId": "SPDXRef-package-1564815f-0edf-42ee-9584-dc89fd3dea3f",
+      "relationshipType": "CONTAINS",
+      "relatedSpdxElement": "SPDXRef-package-48e2400f-14cb-493f-916e-3f7950aeb4cd"
+    },
+    {
+      "spdxElementId": "SPDXRef-package-1564815f-0edf-42ee-9584-dc89fd3dea3f",
+      "relationshipType": "CONTAINS",
+      "relatedSpdxElement": "SPDXRef-package-1ffe6406-89b4-415b-9902-0d6549960424"
+    }
+  ]
+}
