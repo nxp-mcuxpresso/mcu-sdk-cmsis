@@ -131,6 +131,41 @@ if (CONFIG_MCUX_COMPONENT_CMSIS_Include_core_ca7)
 
 endif()
 
+if (CONFIG_MCUX_COMPONENT_CMSIS_Include_core_ca)
+    mcux_add_source(
+        SOURCES
+            Core_AArch64/Include/cache_armv8a.h
+            Core_AArch64/Include/cmsis_compiler.h
+            Core_AArch64/Include/core_common.h
+            Core_AArch64/Include/gic_v3.h
+            Core_AArch64/Include/mmu_armv8a.h
+            Core_AArch64/Include/timer_armv8a.h
+            Core_AArch64/Source/cache_armv8a.c
+            Core_AArch64/Source/mmu_armv8a.c
+    )
+
+    mcux_add_source(
+        SOURCES Core_AArch64/Include/cmsis_gcc.h
+	COMPILERS gcc
+    )
+
+    mcux_add_source(
+        SOURCES Core_AArch64/Include/core_ca53.h
+	CORES ca53
+    )
+
+    mcux_add_source(
+        SOURCES Core_AArch64/Include/core_ca55.h
+	CORES ca55
+    )
+
+    mcux_add_include(
+        INCLUDES
+            Core_AArch64/Include/./
+    )
+
+endif()
+
 if (CONFIG_MCUX_COMPONENT_CMSIS_DSP_Include)
     mcux_add_source(
         SOURCES
