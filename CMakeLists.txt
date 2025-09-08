@@ -61,7 +61,7 @@ if (CONFIG_MCUX_COMPONENT_CMSIS_Include_core_cm)
     mcux_add_source(
         SOURCES Core/Include/core_cm7.h
         SOURCES Core/Include/m-profile/armv7m_cachel1.h
-        CORES cm7 cm7f
+        CORES cm7 cm7f cm85
     )
 
     mcux_add_source(
